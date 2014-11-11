@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<html>
+<body>
+<div align="center">
+    {% if session_id %}
+    <div style="font-size: 32px; margin: 25px 0">
+        Choose the best image for our poster...
+    </div>
+    <hr>
+    <table align="center" id="ContentTable">
+    <tr>
+    <td style="max-width:50%;">
+        <div>
+            <img src="{% static img1.name %}" title="Click to choose this..."
+                 style="max-width:100%; max-height: 480px; cursor: pointer;"
+                 onclick="rate('{{img1.id}}', '{{session_id}}')"><br>
+            <a href="{% static img1.name %}" target="_blank" style="float: right">see full size</a>
+        </div>
+    </td>
+    <td style="max-width:50%;">
+        <div>
+            <img src="{% static img2.name %}" title="Click to choose this..."
+                 style="max-width:100%; max-height: 480px; cursor: pointer;"
+                 onclick="rate('{{img2.id}}', '{{session_id}}')"><br>
+            <a href="{% static img2.name %}" target="_blank" style="float: right">see full size</a>
+        </div>
+    </td>
+    </tr>
+    <tr>
+    <td align="center">
+        <input type="button" value="Choose this" onclick="rate('{{img1.id}}', '{{session_id}}')">
+    </td>
+    <td align="center">
+        <input type="button" value="Choose this" onclick="rate('{{img1.id}}', '{{session_id}}')">
+    </td>
+    </tr>
+    </table>
+    {% else %}
+    No session_id
+    {% endif %}
+</div>
+<script>
+function rate(img_id, session_id)
+{
+    update_div('ContentTable', 'rate?' + values, )
+}
+function update_div(divItem, url, callback)
+{   
+    if (window.XMLHttpRequest)
+    {
+        var xmlhttp = new XMLHttpRequest(); 
+    }
+    else
+    {
+        var xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');   
+    }
+     
+    xmlhttp.onreadystatechange = function()
+    {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+            document.getElementById(divItem).innerHTML = xmlhttp.responseText; 
+            if(typeof(callback)!=='undefined')
+            {
+                try{
+                    callback();
+                } catch(e) {
+                }
+            }
+        }
+    }
+    xmlhttp.open('GET', url.replace(/#/g, '%23'), true);   //server don't accept #
+    xmlhttp.send();
+}
+</script>
+</body>
+</html>

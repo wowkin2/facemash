@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+<body>
+<div align="center">
+    <a href="{% static img.name %}"><img src="{% static img.name %}" height="480px">
+    <br>
+    <div style="font-size: 26px">
+        <a href="start?id" onClick="this.href=this.href.split('?')[0]+'?id='+Math.random()">
+            Add your opinion >>
+        </a>
+    </div>
+    <br>
+    
+    <table>
+    <tr><td>Statistics:</td></tr>
+    {% include 'statistics.html' %}
+    </table>
+</div>
+</body>
+</html>
