@@ -2,19 +2,22 @@
 <html>
 <body>
 <div align="center">
-    <a href="{% static img.name %}"><img src="{% static img.name %}" height="480px">
+    <div style="font-size: 32px; margin: 25px 0; display: inline">
+        Choose the best image for our poster...
+    </div>
+    <hr>
+    <a href="{% static img.path %}"><img src="{% static img.path %}" height="480px">
     <br>
     <div style="font-size: 26px">
-        <a href="start?id" onClick="this.href=this.href.split('?')[0]+'?id='+Math.random()">
+        <a href="start?session_id=" onClick="this.href=this.href.split('?')[0]+'?session_id='+Math.random()">
             Add your opinion >>
         </a>
     </div>
     <br>
-    
-    <table>
-    <tr><td>Statistics:</td></tr>
+    <hr>
+    <div style="font: 30px bold;">Statistics:</div>
+    <hr>
     {% include 'statistics.html' %}
-    </table>
 </div>
 </body>
 </html>

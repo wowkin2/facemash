@@ -1,0 +1,29 @@
+{% load staticfiles %}
+    <tr>
+    <td style="max-width:50%;">
+        <div>
+            <img src="{% static img1.path %}" title="Click to choose this..."
+                 style="max-width:100%; max-height: 480px; cursor: pointer;"
+                 onclick="rate('{{img1.id}}', '{{session_id}}')"><br>
+            {{ img1.rating }}
+            <a href="{% static img1.path %}" target="_blank" style="float: right">see full size</a>
+        </div>
+    </td>
+    <td style="max-width:50%;">
+        <div>
+            <img src="{% static img2.path %}" title="Click to choose this..."
+                 style="max-width:100%; max-height: 480px; cursor: pointer;"
+                 onclick="rate('{{img2.id}}', '{{session_id}}')"><br>
+            {{ img2.rating }}
+            <a href="{% static img2.path %}" target="_blank" style="float: right">see full size</a>
+        </div>
+    </td>
+    </tr>
+    <tr>
+    <td align="center">
+        <input type="button" value="Choose this" onclick="rate('{{img1.id}}', '{{session_id}}')">
+    </td>
+    <td align="center">
+        <input type="button" value="Choose this" onclick="rate('{{img1.id}}', '{{session_id}}')">
+    </td>
+    </tr>

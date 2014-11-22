@@ -1,5 +1,13 @@
 {% load staticfiles %}
-<a href="home"><< Home</a><br><br>
-{% for item in images %}
-{{ item }}<br>
-{% endfor %}
+<html>
+<body>
+    <a href="/" style="float: left; text-decoration: none">
+        <img src="{% static 'home.png' %}" height="32px">Home
+    </a><br>
+    {% for item in images %}
+        <div style="display: inline">
+            <a href="{% static item.path %}"><img src="{% static item.path %}" height="128px"></a>
+        </div>
+    {% endfor %}
+</body>
+</html>

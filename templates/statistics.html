@@ -1,1 +1,12 @@
 {% load staticfiles %}
+<div>
+{% for item in images %}
+<div style="min-width: 220px; display: inline;">
+    <div style="display: inline-block; padding: 10px 0;">
+        <a href="{% static item.path %}"><img src="{% static item.path %}" height="128px"></a>
+        <br>
+        Rating: {{ item.rating }}
+    </div>
+</div>
+{% endfor %}
+</div>
