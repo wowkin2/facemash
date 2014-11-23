@@ -32,7 +32,7 @@ def __import_images():
 
 def home(request):
     images = Image.objects.order_by('-rating')
-    if images is None:
+    if len(images) == 0:
         images = __import_images()
     img = random.choice(images)
 
